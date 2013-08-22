@@ -9,7 +9,7 @@ import javax.xml.bind.JAXB;
 import org.junit.Test;
 
 public class TagTest {
-    private static final String XML_HEADER = PersonWebResourceIT.XML_HEADER;
+    private static final String XML_HEADER = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>";
 
     private static final String XML = XML_HEADER + "\n" //
             + "<tag key=\"X\">hiho</tag>\n";
