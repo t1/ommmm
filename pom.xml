@@ -137,30 +137,6 @@
 					<artifactId>maven-failsafe-plugin</artifactId>
 					<version>2.15</version>
 				</plugin>
-				<plugin>
-					<groupId>org.codehaus.cargo</groupId>
-					<artifactId>cargo-maven2-plugin</artifactId>
-					<version>1.4.3</version>
-					<configuration>
-						<configuration>
-							<properties>
-								<cargo.port.offset>${cargo.port.offset}</cargo.port.offset>
-							</properties>
-						</configuration>
-						<deployables>
-							<!-- The project's artifact is automatically deployed if no deployable is defined. However, we define it here so that 
-								we can specify the context (we don't want the version to be included in the context). -->
-							<deployable>
-								<groupId>${project.groupId}</groupId>
-								<artifactId>${project.artifactId}</artifactId>
-								<type>war</type>
-								<properties>
-									<context>${project.artifactId}</context>
-								</properties>
-							</deployable>
-						</deployables>
-					</configuration>
-				</plugin>
 			</plugins>
 		</pluginManagement>
 		<plugins>
@@ -185,80 +161,91 @@
 					</archive>
 				</configuration>
 			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-failsafe-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>perform-it</id>
-						<goals>
-							<goal>integration-test</goal>
-						</goals>
-						<configuration>
-							<systemProperties>
-								<property>
-									<name>cargo.port.offset</name>
-									<value>${cargo.port.offset}</value>
-								</property>
-							</systemProperties>
-						</configuration>
-					</execution>
-					<execution>
-						<id>verify-it</id>
-						<goals>
-							<goal>verify</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.codehaus.cargo</groupId>
-				<artifactId>cargo-maven2-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>start-cargo</id>
-						<phase>pre-integration-test</phase>
-						<goals>
-							<goal>start</goal>
-						</goals>
-					</execution>
-					<execution>
-						<id>stop-cargo</id>
-						<phase>post-integration-test</phase>
-						<goals>
-							<goal>stop</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
 		</plugins>
 	</build>
 
 	<profiles>
 		<profile>
-			<id>jboss71x</id>
-			<activation>
-				<activeByDefault>true</activeByDefault>
-			</activation>
+			<id>cargo-jboss71x</id>
 			<build>
-				<pluginManagement>
-					<plugins>
-						<plugin>
-							<groupId>org.codehaus.cargo</groupId>
-							<artifactId>cargo-maven2-plugin</artifactId>
-							<configuration>
-								<container>
-									<containerId>jboss71x</containerId>
-									<artifactInstaller>
-										<groupId>org.jboss.as</groupId>
-										<artifactId>jboss-as-dist</artifactId>
-										<version>7.1.1.Final</version>
-									</artifactInstaller>
-								</container>
-							</configuration>
-						</plugin>
-					</plugins>
-				</pluginManagement>
+				<plugins>
+					<plugin>
+						<groupId>org.codehaus.cargo</groupId>
+						<artifactId>cargo-maven2-plugin</artifactId>
+						<version>1.4.3</version>
+						<configuration>
+							<properties>
+								<cargo.port.offset>${cargo.port.offset}</cargo.port.offset>
+							</properties>
+							<container>
+								<containerId>jboss71x</containerId>
+								<artifactInstaller>
+									<groupId>org.jboss.as</groupId>
+									<artifactId>jboss-as-dist</artifactId>
+									<version>7.1.1.Final</version>
+								</artifactInstaller>
+							</container>
+							<deployables>
+								<!-- The project's artifact is automatically deployed if no deployable is defined. However, we define it here so 
+									that we can specify the context (we don't want the version to be included in the context). -->
+								<deployable>
+									<groupId>${project.groupId}</groupId>
+									<artifactId>${project.artifactId}</artifactId>
+									<type>war</type>
+									<properties>
+										<context>${project.artifactId}</context>
+									</properties>
+								</deployable>
+							</deployables>
+						</configuration>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-failsafe-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>perform-it</id>
+								<goals>
+									<goal>integration-test</goal>
+								</goals>
+								<configuration>
+									<systemProperties>
+										<property>
+											<name>cargo.port.offset</name>
+											<value>${cargo.port.offset}</value>
+										</property>
+									</systemProperties>
+								</configuration>
+							</execution>
+							<execution>
+								<id>verify-it</id>
+								<goals>
+									<goal>verify</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<groupId>org.codehaus.cargo</groupId>
+						<artifactId>cargo-maven2-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>start-cargo</id>
+								<phase>pre-integration-test</phase>
+								<goals>
+									<goal>start</goal>
+								</goals>
+							</execution>
+							<execution>
+								<id>stop-cargo</id>
+								<phase>post-integration-test</phase>
+								<goals>
+									<goal>stop</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
 			</build>
 		</profile>
 
