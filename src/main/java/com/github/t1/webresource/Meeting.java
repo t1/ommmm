@@ -33,8 +33,7 @@ public class Meeting implements Serializable {
     // TODO attendees, absentees, distribution
 
     /** required by JAXB */
-    Meeting() {
-    }
+    Meeting() {}
 
     public Meeting(String title, Date begin) {
         this.title = title;

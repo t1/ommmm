@@ -21,8 +21,7 @@ public abstract class TaskAgendaItem extends AgendaItem {
 
     /** required by JAXB */
     @SuppressWarnings("deprecation")
-    TaskAgendaItem() {
-    }
+    TaskAgendaItem() {}
 
     public TaskAgendaItem(String text, AgendaTopic topic, Date due) {
         super(text, topic);

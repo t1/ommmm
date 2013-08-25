@@ -10,10 +10,11 @@ import javax.xml.bind.annotation.*;
 
 import lombok.*;
 
-/** Normally, entities are not very good candidates to be value types (equals/hashCode have to take
- * the id and version into account, which doesn't make sense for value types), but Tags, actually, are!
- * They are identified by their key and value, everything else is not in the xml and as immutable as it
- * goes with entities. */
+/**
+ * Normally, entities are not very good candidates to be value types (equals/hashCode have to take the id and version
+ * into account, which doesn't make sense for value types), but Tags, actually, are! They are identified by their key
+ * and value, everything else is not in the xml and as immutable as it goes with entities.
+ */
 @Entity
 @Data
 @Setter(PRIVATE)

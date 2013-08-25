@@ -13,6 +13,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<cargo.port.offset>100</cargo.port.offset>
 	</properties>
 
 	<dependencyManagement>
@@ -143,7 +144,7 @@
 					<configuration>
 						<configuration>
 							<properties>
-								<cargo.port.offset>100</cargo.port.offset>
+								<cargo.port.offset>${cargo.port.offset}</cargo.port.offset>
 							</properties>
 						</configuration>
 						<deployables>
@@ -193,6 +194,14 @@
 						<goals>
 							<goal>integration-test</goal>
 						</goals>
+						<configuration>
+							<systemProperties>
+								<property>
+									<name>cargo.port.offset</name>
+									<value>${cargo.port.offset}</value>
+								</property>
+							</systemProperties>
+						</configuration>
 					</execution>
 					<execution>
 						<id>verify-it</id>

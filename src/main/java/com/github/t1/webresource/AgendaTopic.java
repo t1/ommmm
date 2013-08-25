@@ -28,8 +28,7 @@ public abstract class AgendaTopic implements Serializable {
 
     /** required by JAXB */
     @Deprecated
-    AgendaTopic() {
-    }
+    AgendaTopic() {}
 
     public AgendaTopic(String text, Meeting meeting) {
         this.text = text;

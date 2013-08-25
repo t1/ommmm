@@ -15,8 +15,7 @@ public abstract class InformationAgendaItem extends AgendaItem {
 
     /** required by JAXB */
     @SuppressWarnings("deprecation")
-    InformationAgendaItem() {
-    }
+    InformationAgendaItem() {}
 
     public InformationAgendaItem(String text, AgendaTopic topic) {
         super(text, topic);

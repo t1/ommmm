@@ -15,8 +15,7 @@ public abstract class DecisionAgendaItem extends AgendaItem {
 
     /** required by JAXB */
     @SuppressWarnings("deprecation")
-    DecisionAgendaItem() {
-    }
+    DecisionAgendaItem() {}
 
     public DecisionAgendaItem(String text, AgendaTopic topic) {
         super(text, topic);

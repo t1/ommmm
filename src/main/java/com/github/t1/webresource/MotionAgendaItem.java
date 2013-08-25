@@ -15,8 +15,7 @@ public abstract class MotionAgendaItem extends AgendaItem {
 
     /** required by JAXB */
     @SuppressWarnings("deprecation")
-    MotionAgendaItem() {
-    }
+    MotionAgendaItem() {}
 
     public MotionAgendaItem(String text, AgendaTopic topic) {
         super(text, topic);

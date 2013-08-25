@@ -20,7 +20,7 @@ public abstract class AgendaItem implements Serializable {
     @GeneratedValue
     @XmlAttribute
     private BigDecimal id;
- 
+
     @NotNull
     private String text;
 
@@ -30,8 +30,7 @@ public abstract class AgendaItem implements Serializable {
 
     /** required by JAXB */
     @Deprecated
-    AgendaItem() {
-    }
+    AgendaItem() {}
 
     public AgendaItem(String text, AgendaTopic topic) {
         this.text = text;
