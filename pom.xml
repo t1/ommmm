@@ -191,6 +191,22 @@
 								</deployable>
 							</deployables>
 						</configuration>
+						<executions>
+							<execution>
+								<id>start-cargo</id>
+								<phase>pre-integration-test</phase>
+								<goals>
+									<goal>start</goal>
+								</goals>
+							</execution>
+							<execution>
+								<id>stop-cargo</id>
+								<phase>post-integration-test</phase>
+								<goals>
+									<goal>stop</goal>
+								</goals>
+							</execution>
+						</executions>
 					</plugin>
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
@@ -214,26 +230,6 @@
 								<id>verify-it</id>
 								<goals>
 									<goal>verify</goal>
-								</goals>
-							</execution>
-						</executions>
-					</plugin>
-					<plugin>
-						<groupId>org.codehaus.cargo</groupId>
-						<artifactId>cargo-maven2-plugin</artifactId>
-						<executions>
-							<execution>
-								<id>start-cargo</id>
-								<phase>pre-integration-test</phase>
-								<goals>
-									<goal>start</goal>
-								</goals>
-							</execution>
-							<execution>
-								<id>stop-cargo</id>
-								<phase>post-integration-test</phase>
-								<goals>
-									<goal>stop</goal>
 								</goals>
 							</execution>
 						</executions>
