@@ -1,37 +1,42 @@
 package com.github.t1.webresource;
 
+import static javax.xml.bind.annotation.XmlAccessType.*;
+
 import java.io.Serializable;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.*;
 
-import lombok.Data;
+import lombok.*;
 
 @Entity
-@XmlRootElement
 @WebResource
-@Data
-public abstract class AgendaTopic implements Serializable {
+@Getter
+@Setter
+@ToString
+@XmlRootElement
+@XmlAccessorType(NONE)
+public class Topic implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue
-    @XmlAttribute
     private Long id;
 
     @NotNull
-    private String text;
+    @XmlAttribute
+    private String key;
 
     @NotNull
-    private Meeting meeting;
+    @XmlElement
+    private String text;
 
     /** required by JAXB */
     @Deprecated
-    AgendaTopic() {}
+    Topic() {}
 
-    public AgendaTopic(String text, Meeting meeting) {
+    public Topic(String text) {
         this.text = text;
-        this.meeting = meeting;
     }
 }

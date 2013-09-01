@@ -28,6 +28,7 @@ public class Meeting implements Serializable {
     @NotNull
     private Date begin;
 
+    // TODO agenda items
     // TODO series
     // TODO duration/end; date-of-writing
     // TODO attendees, absentees, distribution
