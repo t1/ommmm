@@ -1,3 +1,30 @@
+* {
+	font-family: 'Open Sans', Helvetica, Arial, sans-serif; font-weight: 300;
+}
+
 label {
-	width: 50pt; display: inline-block; margin-right: 5pt; text-align: right;
+	width: 50pt;
+	display: inline-block;
+	margin-right: 5pt;
+	text-align: right;
+	text-transform: capitalize;
+}
+
+thead {
+	display: table-header-group;
+}
+
+th {
+	border-bottom: 1px solid #cbcbcb;
+	text-transform: capitalize;
+}
+
+li {
+	display: inline-block; padding: 2px 5px; cursor: pointer; vertical-align: center;
+	font: -webkit-small-control;
+	border: 1px solid #cbcbcb; border-radius: 4px;
+}
+
+ul {
+	display: inline-block; padding: 1px 3px; margin: 0px; cursor: pointer;
 }
