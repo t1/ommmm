@@ -10,6 +10,8 @@ import javax.xml.bind.annotation.*;
 
 import lombok.*;
 
+import com.github.t1.webresource.codec.HtmlLinkText;
+
 @Entity
 @WebResource
 @Getter
@@ -26,6 +28,7 @@ public class Topic implements Serializable {
 
     @NotNull
     @XmlAttribute
+    @HtmlLinkText
     private String key;
 
     @NotNull

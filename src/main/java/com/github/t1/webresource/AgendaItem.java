@@ -3,7 +3,6 @@ package com.github.t1.webresource;
 import static javax.xml.bind.annotation.XmlAccessType.*;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -24,7 +23,7 @@ public class AgendaItem implements Serializable {
     @Id
     @GeneratedValue
     @XmlAttribute
-    private BigDecimal id;
+    private long id;
 
     @NotNull
     @XmlElement

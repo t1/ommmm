@@ -19,12 +19,30 @@ th {
 	text-transform: capitalize;
 }
 
-li {
-	display: inline-block; padding: 2px 5px; cursor: pointer; vertical-align: center;
+a {
+	padding: 2px 5px; cursor: pointer;
 	font: -webkit-small-control;
 	border: 1px solid #cbcbcb; border-radius: 4px;
+	text-decoration: none;
+	color: black;
+}
+
+a:hover {
+	border-color: #888888;
 }
 
 ul {
-	display: inline-block; padding: 1px 3px; margin: 0px; cursor: pointer;
+	display: inline-block; padding: 1px 3px; margin: 0px;
+}
+
+li {
+	display: inline-block;
+}
+
+.dialog-div {
+	position: fixed;
+	left: 3%;
+	top: 3%; z-index =3000;
+	box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
+	background: #fff;
 }
