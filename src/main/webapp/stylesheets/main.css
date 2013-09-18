@@ -1,3 +1,48 @@
+* {
+	font-family: 'Open Sans', Helvetica, Arial, sans-serif; font-weight: 300;
+}
+
 label {
-	width: 50pt; display: inline-block; margin-right: 5pt; text-align: right;
+	width: 50pt;
+	display: inline-block;
+	margin-right: 5pt;
+	text-align: right;
+	text-transform: capitalize;
+}
+
+thead {
+	display: table-header-group;
+}
+
+th {
+	border-bottom: 1px solid #cbcbcb;
+	text-transform: capitalize;
+}
+
+a {
+	padding: 2px 5px; cursor: pointer;
+	font: -webkit-small-control;
+	border: 1px solid #cbcbcb; border-radius: 4px;
+	text-decoration: none;
+	color: black;
+}
+
+a:hover {
+	border-color: #888888;
+}
+
+ul {
+	display: inline-block; padding: 1px 3px; margin: 0px;
+}
+
+li {
+	display: inline-block;
+}
+
+.dialog-div {
+	position: fixed;
+	left: 3%;
+	top: 3%; z-index =3000;
+	box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
+	background: #fff;
 }

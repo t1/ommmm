@@ -9,10 +9,10 @@ import javax.xml.bind.annotation.*;
 
 import lombok.Data;
 
-@Entity
-@XmlRootElement
-@WebResource
 @Data
+@Entity
+@WebResource
+@XmlRootElement
 public class Meeting implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -28,13 +28,13 @@ public class Meeting implements Serializable {
     @NotNull
     private Date begin;
 
+    // TODO agenda items
     // TODO series
     // TODO duration/end; date-of-writing
     // TODO attendees, absentees, distribution
 
     /** required by JAXB */
-    Meeting() {
-    }
+    Meeting() {}
 
     public Meeting(String title, Date begin) {
         this.title = title;
