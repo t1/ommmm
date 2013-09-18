@@ -26,11 +26,13 @@ public class Topic implements Serializable {
     @GeneratedValue
     private Long id;
 
+    /** A handy abbreviation for the topic. */
     @NotNull
     @XmlAttribute
     @HtmlLinkText
     private String key;
 
+    /** The full description of the topic. */
     @NotNull
     @XmlElement
     private String text;

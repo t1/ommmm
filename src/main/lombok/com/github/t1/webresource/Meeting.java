@@ -9,10 +9,10 @@ import javax.xml.bind.annotation.*;
 
 import lombok.Data;
 
-@Entity
-@XmlRootElement
-@WebResource
 @Data
+@Entity
+@WebResource
+@XmlRootElement
 public class Meeting implements Serializable {
     private static final long serialVersionUID = 1L;
 
