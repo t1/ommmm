@@ -19,6 +19,18 @@ th {
 	text-transform: capitalize;
 }
 
+tr:nth-child(even) {
+	background: #f4f4f4
+}
+
+td:hover {
+	background: #eeeeee
+}
+
+td:last-child {
+	background: white;
+}
+
 a {
 	padding: 2px 5px; cursor: pointer;
 	font: -webkit-small-control;
