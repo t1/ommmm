@@ -13,6 +13,7 @@ import javax.xml.bind.annotation.*;
 
 import lombok.*;
 
+import com.github.t1.webresource.codec.HtmlLinkText;
 import com.google.common.collect.ImmutableList;
 
 @Entity
@@ -38,6 +39,7 @@ public class Person implements Serializable {
     String first;
 
     @XmlElement
+    @HtmlLinkText
     @NotNull
     @Size(min = 1, max = 50)
     @Pattern(regexp = "\\p{Alpha}*", message = "must contain only alphabetical characters")

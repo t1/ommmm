@@ -1,7 +1,9 @@
 package com.github.t1.webresource;
 
+import static javax.persistence.FetchType.*;
+
 import java.io.Serializable;
-import java.util.Date;
+import java.util.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
@@ -28,10 +30,14 @@ public class Meeting implements Serializable {
     @NotNull
     private Date begin;
 
+    @NotNull
+    @OneToMany(fetch = EAGER)
+    private List<Person> attendees;
+
     // TODO agenda items
     // TODO series
     // TODO duration/end; date-of-writing
-    // TODO attendees, absentees, distribution
+    // TODO absentees, distribution
 
     /** required by JAXB */
     Meeting() {}
