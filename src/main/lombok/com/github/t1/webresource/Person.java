@@ -23,6 +23,7 @@ import com.google.common.collect.ImmutableList;
 @ToString
 @XmlRootElement
 @XmlAccessorType(NONE)
+@HtmlLinkText("${first} ${last}")
 public class Person implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -39,7 +40,6 @@ public class Person implements Serializable {
     String first;
 
     @XmlElement
-    @HtmlLinkText
     @NotNull
     @Size(min = 1, max = 50)
     @Pattern(regexp = "\\p{Alpha}*", message = "must contain only alphabetical characters")
