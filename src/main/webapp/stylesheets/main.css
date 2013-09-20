@@ -10,8 +10,19 @@ label {
 	text-transform: capitalize;
 }
 
+table {
+	border-spacing: 0pt;
+	border: 1px solid #cbcbcb;
+}
+
+td, th {
+	padding: 3pt 5pt 2pt 5pt;
+}
+
 thead {
+	background: #f4f4f4;
 	display: table-header-group;
+	text-align: left;
 }
 
 th {
@@ -19,16 +30,14 @@ th {
 	text-transform: capitalize;
 }
 
+/* we need the nth-child(n) to make the hover work :( */
+tr:nth-child(n):hover {
+	background: #f4f4f4;
+	cursor: pointer;
+}
+
 tr:nth-child(even) {
-	background: #f4f4f4
-}
-
-td:hover {
-	background: #eeeeee
-}
-
-td:last-child {
-	background: white;
+	background: #fafafa;
 }
 
 a {
