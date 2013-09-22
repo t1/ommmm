@@ -10,6 +10,8 @@ import javax.xml.bind.annotation.*;
 
 import lombok.*;
 
+import com.github.t1.webresource.codec.HtmlLinkText;
+
 @Entity
 @WebResource
 @Getter
@@ -27,6 +29,7 @@ public class AgendaItem implements Serializable {
 
     @NotNull
     @XmlElement
+    @HtmlLinkText
     private String text;
 
     @ManyToOne

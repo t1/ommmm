@@ -31,10 +31,13 @@ public class Meeting implements Serializable {
     private Date begin;
 
     @NotNull
-    @OneToMany(fetch = EAGER)
-    private List<Person> attendees;
+    @ManyToMany(fetch = EAGER)
+    private Set<Person> attendees;
 
-    // TODO agenda items
+    @NotNull
+    @ManyToMany(fetch = EAGER)
+    private Set<AgendaItem> agendaItem;
+
     // TODO series
     // TODO duration/end; date-of-writing
     // TODO absentees, distribution
