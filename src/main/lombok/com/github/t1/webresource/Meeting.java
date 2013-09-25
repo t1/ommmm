@@ -15,6 +15,7 @@ import lombok.Data;
 @Entity
 @WebResource
 @XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Meeting implements Serializable {
     private static final long serialVersionUID = 1L;
 
