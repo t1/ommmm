@@ -11,9 +11,11 @@ import com.google.common.collect.ImmutableSet;
 public class MeetingTest {
 
     private final Meeting meeting = new Meeting();
+    private static long nextId;
 
     private Person snape(String first, String last) {
         Person person = new Person();
+        person.setId(nextId++);
         person.setFirst(first);
         person.setLast(last);
         return person;

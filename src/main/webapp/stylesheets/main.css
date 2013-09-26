@@ -1,11 +1,13 @@
 * {
-	font-family: 'Open Sans', Helvetica, Arial, sans-serif; font-weight: 300;
+	font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+	font-weight: 300;
+	vertical-align: top;
 }
 
 label {
-	width: 50pt;
+	width: 70pt;
 	display: inline-block;
-	margin-right: 5pt;
+	margin-top: 2.8pt;
 	text-align: right;
 	text-transform: capitalize;
 }
@@ -30,7 +32,7 @@ th {
 	text-transform: capitalize;
 }
 
-/* we need the nth-child(n) to make the hover work :( */
+/* nth-child(n) just to make the hover work :( */
 tr:nth-child(n):hover {
 	background: #f4f4f4;
 	cursor: pointer;
@@ -40,7 +42,19 @@ tr:nth-child(even) {
 	background: #fafafa;
 }
 
-a {
+ul {
+	display: inline-block; padding: 3px 3px 1px 20px; margin: 2px;
+}
+
+ul.persons {
+	padding-left: 0px;
+}
+
+ul.persons li {
+	display: inline-block;
+}
+
+ul.persons li a {
 	padding: 2px 5px; cursor: pointer;
 	font: -webkit-small-control;
 	border: 1px solid #cbcbcb; border-radius: 4px;
@@ -48,16 +62,8 @@ a {
 	color: black;
 }
 
-a:hover {
+ul.persons li a:hover {
 	border-color: #777777;
-}
-
-ul {
-	display: inline-block; padding: 1px 3px; margin: 0px;
-}
-
-li {
-	display: inline-block;
 }
 
 .dialog-div {

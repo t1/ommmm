@@ -19,21 +19,22 @@ import com.github.t1.webresource.codec.HtmlLinkText;
 @ToString
 @XmlRootElement
 @XmlAccessorType(NONE)
-public class AgendaItem implements Serializable {
+public class AgendaItem implements Serializable, Comparable<AgendaItem> {
     private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue
-    @XmlAttribute
-    private long id;
+    @XmlTransient
+    private Long id;
 
     @NotNull
     @XmlElement
     @HtmlLinkText
-    private String text;
+    private String title;
 
     @ManyToOne
     @XmlElement
+    @OrderBy("key")
     private Topic topic;
 
     // TODO meeting
@@ -43,8 +44,13 @@ public class AgendaItem implements Serializable {
     @Deprecated
     AgendaItem() {}
 
-    public AgendaItem(String text, Topic topic) {
-        this.text = text;
+    public AgendaItem(String title, Topic topic) {
+        this.title = title;
         this.topic = topic;
+    }
+
+    @Override
+    public int compareTo(AgendaItem that) {
+        return this.title.compareTo(that.title);
     }
 }

@@ -21,7 +21,7 @@ public class Meeting implements Serializable {
 
     @Id
     @GeneratedValue
-    @XmlAttribute
+    @XmlTransient
     private Long id;
 
     @NotNull
@@ -33,10 +33,14 @@ public class Meeting implements Serializable {
 
     @NotNull
     @ManyToMany(fetch = EAGER)
+    @OrderBy("last, first")
     private Set<Person> attendees;
 
     @NotNull
     @ManyToMany(fetch = EAGER)
+    @OrderBy("title")
+    @XmlElementWrapper(name = "agenda")
+    @XmlElement(name = "item")
     private Set<AgendaItem> agendaItem;
 
     // TODO series
