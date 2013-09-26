@@ -35,7 +35,6 @@ th {
 /* nth-child(n) just to make the hover work :( */
 tr:nth-child(n):hover {
 	background: #f4f4f4;
-	cursor: pointer;
 }
 
 tr:nth-child(even) {
@@ -54,9 +53,13 @@ ul.persons li {
 	display: inline-block;
 }
 
+ul li a {
+	padding: 2px 5px;
+	text-decoration: none;
+}
+
 ul.persons li a {
-	padding: 2px 5px; cursor: pointer;
-	font: -webkit-small-control;
+	padding: 2px 5px;
 	border: 1px solid #cbcbcb; border-radius: 4px;
 	text-decoration: none;
 	color: black;
