@@ -1,6 +1,6 @@
 package com.github.t1.webresource;
 
-import static lombok.AccessLevel.*;
+import static javax.xml.bind.annotation.XmlAccessType.*;
 
 import java.io.Serializable;
 
@@ -10,34 +10,26 @@ import javax.xml.bind.annotation.*;
 
 import lombok.*;
 
-/**
- * Normally, entities are not very good candidates to be value types (equals/hashCode have to take the id and version
- * into account, which doesn't make sense for value types), but Tags, actually, are! They are identified by their key
- * and value, everything else is not in the xml and as immutable as it goes with entities.
- */
 @Entity
-@Data
-@Setter(PRIVATE)
-@XmlRootElement
-@XmlAccessorType(XmlAccessType.NONE)
 @WebResource
+@Getter
+@Setter
+@XmlRootElement
+@XmlAccessorType(NONE)
 @NamedQuery(name = "findByKey", query = "SELECT t from Tag t where t.key = :key")
 public class Tag implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @Getter(PACKAGE)
-    @Setter(PACKAGE)
+    @XmlTransient
     private @Id
     @GeneratedValue
     Long id;
 
-    @Getter(PACKAGE)
-    @Setter(PACKAGE)
+    @XmlTransient
     private @Column
     @Version
     int version = 0;
 
-    @Setter(PACKAGE)
     @XmlAttribute
     private @NotNull
     @Size(min = 1, max = 20)

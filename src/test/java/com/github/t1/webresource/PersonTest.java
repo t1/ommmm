@@ -1,18 +1,17 @@
 package com.github.t1.webresource;
 
 import static org.junit.Assert.*;
-import static org.mockito.Mockito.*;
 
 import java.io.*;
+import java.util.List;
 
 import javax.xml.bind.JAXB;
 
-import org.junit.*;
+import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableList;
 
 @RunWith(MockitoJUnitRunner.class)
 public class PersonTest {
@@ -20,23 +19,16 @@ public class PersonTest {
             + "<person>\n" //
             + "    <first>Joe</first>\n" //
             + "    <last>Doe</last>\n" //
-            + "    <tags>key1 key2</tags>\n" //
+            + "    <tags>\n" //
+            + "        <tag key=\"key1\">description1</tag>\n" //
+            + "        <tag key=\"key2\">description2</tag>\n" //
+            + "    </tags>\n" //
             + "</person>\n";
 
     private final Tag TAG1 = new Tag("key1", "description1");
     private final Tag TAG2 = new Tag("key2", "description2");
 
     private final Person person = new Person("Joe", "Doe");
-
-    @Mock
-    Tags tagFactory;
-
-    @Before
-    public void before() {
-        person.tagFactory = tagFactory;
-        when(tagFactory.of(TAG1.getKey())).thenReturn(TAG1);
-        when(tagFactory.of(TAG2.getKey())).thenReturn(TAG2);
-    }
 
     @Test
     public void shouldMarshal() throws Exception {
@@ -54,21 +46,24 @@ public class PersonTest {
 
         assertEquals(person.getFirst(), person.getFirst());
         assertEquals(person.getLast(), person.getLast());
-        // TODO fix assertEquals(ImmutableSet.of(TAG1, TAG2), person.getTags());
+
+        List<Tag> tags = person.getTags();
+        assertEquals(2, tags.size());
+
+        Tag tag1 = tags.get(0);
+        assertEquals(TAG1.getKey(), tag1.getKey());
+        assertEquals(TAG1.getDescription(), tag1.getDescription());
+
+        Tag tag2 = tags.get(1);
+        assertEquals(TAG2.getKey(), tag2.getKey());
+        assertEquals(TAG2.getDescription(), tag2.getDescription());
     }
 
     @Test
     public void shouldTagWithTag() throws Exception {
         person.tag(TAG1);
 
-        assertEquals(ImmutableSet.of(TAG1), person.getTags());
-    }
-
-    @Test
-    public void shouldTagWithString() throws Exception {
-        person.tag(TAG1.getKey());
-
-        assertEquals(ImmutableSet.of(TAG1), person.getTags());
+        assertEquals(ImmutableList.of(TAG1), person.getTags());
     }
 
     @Test
@@ -77,7 +72,7 @@ public class PersonTest {
 
         person.tag(TAG1);
 
-        assertEquals(ImmutableSet.of(TAG1), person.getTags());
+        assertEquals(ImmutableList.of(TAG1), person.getTags());
     }
 
     @Test
@@ -87,17 +82,7 @@ public class PersonTest {
         boolean untagged = person.untag(TAG1);
 
         assertTrue(untagged);
-        assertEquals(ImmutableSet.of(TAG2), person.getTags());
-    }
-
-    @Test
-    public void shouldUntagWithString() throws Exception {
-        person.tag(TAG1).tag(TAG2);
-
-        boolean untagged = person.untag(TAG1.getKey());
-
-        assertTrue(untagged);
-        assertEquals(ImmutableSet.of(TAG2), person.getTags());
+        assertEquals(ImmutableList.of(TAG2), person.getTags());
     }
 
     @Test
@@ -105,6 +90,6 @@ public class PersonTest {
         boolean untagged = person.untag(TAG1);
 
         assertFalse(untagged);
-        assertEquals(ImmutableSet.of(), person.getTags());
+        assertEquals(ImmutableList.of(), person.getTags());
     }
 }

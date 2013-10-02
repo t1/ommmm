@@ -1,12 +1,10 @@
 package com.github.t1.webresource;
 
-import static com.google.common.base.Preconditions.*;
 import static javax.xml.bind.annotation.XmlAccessType.*;
 
 import java.io.Serializable;
 import java.util.*;
 
-import javax.inject.Inject;
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import javax.xml.bind.annotation.*;
@@ -14,7 +12,6 @@ import javax.xml.bind.annotation.*;
 import lombok.*;
 
 import com.github.t1.webresource.codec.HtmlLinkText;
-import com.google.common.collect.ImmutableList;
 
 @Entity
 @WebResource
@@ -46,9 +43,10 @@ public class Person implements Serializable {
     private @Column
     String last;
 
-    @XmlTransient
+    @XmlElement(name = "tag")
+    @XmlElementWrapper(name = "tags")
     private @OneToMany(fetch = FetchType.EAGER)
-    Set<Tag> tags = new HashSet<>();
+    List<Tag> tags = new ArrayList<>();
 
     /** required by JAXB */
     Person() {}
@@ -58,43 +56,13 @@ public class Person implements Serializable {
         this.last = last;
     }
 
-    @XmlList
-    @XmlElement(name = "tags")
-    public List<String> getTagList() {
-        ImmutableList.Builder<String> builder = ImmutableList.builder();
-        for (Tag tag : tags) {
-            builder.add(tag.getKey());
-        }
-        return builder.build();
-    }
-
-    public void setTagList(List<String> tags) {
-        for (String tag : tags) {
-            tag(tag);
-        }
-    }
-
-    @Inject
-    transient Tags tagFactory;
-
     public Person tag(Tag tag) {
-        checkNotNull(tag);
-        tags.add(tag);
-        return this;
-    }
-
-    public Person tag(String string) {
-        tag(tagFactory.of(string));
+        if (!tags.contains(tag))
+            tags.add(tag);
         return this;
     }
 
     public boolean untag(Tag tag) {
-        if (tags == null)
-            return false;
         return tags.remove(tag);
-    }
-
-    public boolean untag(String string) {
-        return untag(tagFactory.of(string));
     }
 }

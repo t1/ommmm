@@ -59,9 +59,7 @@ ul li a {
 }
 
 ul.persons li a {
-	padding: 2px 5px;
 	border: 1px solid #cbcbcb; border-radius: 4px;
-	text-decoration: none;
 	color: black;
 }
 
