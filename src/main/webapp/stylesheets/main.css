@@ -45,11 +45,11 @@ ul {
 	display: inline-block; padding: 3px 3px 1px 20px; margin: 2px;
 }
 
-ul.persons {
+ul.tags {
 	padding-left: 0px;
 }
 
-ul.persons li {
+ul.tags li {
 	display: inline-block;
 }
 
@@ -58,12 +58,12 @@ ul li a {
 	text-decoration: none;
 }
 
-ul.persons li a {
+ul.tags li a {
 	border: 1px solid #cbcbcb; border-radius: 4px;
 	color: black;
 }
 
-ul.persons li a:hover {
+ul.tags li a:hover {
 	border-color: #777777;
 }
 
