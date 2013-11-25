@@ -11,7 +11,7 @@ import javax.xml.bind.annotation.*;
 
 import lombok.*;
 
-import com.github.t1.webresource.codec.HtmlLinkText;
+import com.github.t1.webresource.codec.HtmlTitle;
 
 @Entity
 @WebResource
@@ -20,7 +20,7 @@ import com.github.t1.webresource.codec.HtmlLinkText;
 @ToString
 @XmlRootElement
 @XmlAccessorType(NONE)
-@HtmlLinkText("${first} ${last}")
+@HtmlTitle("${first} ${last}")
 public class Person implements Serializable {
     private static final long serialVersionUID = 1L;
 

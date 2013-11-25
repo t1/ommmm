@@ -10,7 +10,7 @@ import javax.xml.bind.annotation.*;
 
 import lombok.*;
 
-import com.github.t1.webresource.codec.HtmlLinkText;
+import com.github.t1.webresource.codec.HtmlTitle;
 
 @Entity
 @WebResource
@@ -29,7 +29,7 @@ public class AgendaItem implements Serializable, Comparable<AgendaItem> {
 
     @NotNull
     @XmlElement
-    @HtmlLinkText
+    @HtmlTitle
     private String title;
 
     @ManyToOne

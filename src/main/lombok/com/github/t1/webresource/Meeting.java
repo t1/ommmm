@@ -1,6 +1,7 @@
 package com.github.t1.webresource;
 
 import static javax.persistence.FetchType.*;
+import static javax.xml.bind.annotation.XmlAccessType.*;
 
 import java.io.Serializable;
 import java.util.*;
@@ -15,14 +16,14 @@ import lombok.Data;
 @Entity
 @WebResource
 @XmlRootElement
-@XmlAccessorType(XmlAccessType.FIELD)
+@XmlAccessorType(FIELD)
 public class Meeting implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue
-    @XmlTransient
-    private Long id;
+    private @XmlTransient
+    Long id;
 
     @NotNull
     @Size(min = 1, max = 100)
@@ -34,14 +35,16 @@ public class Meeting implements Serializable {
     @NotNull
     @ManyToMany(fetch = EAGER)
     @OrderBy("last, first")
-    private Set<Person> attendees;
+    private @WebSubResource
+    Set<Person> attendees;
 
     @NotNull
     @ManyToMany(fetch = EAGER)
     @OrderBy("title")
+    private @WebSubResource
     @XmlElementWrapper(name = "agenda")
     @XmlElement(name = "item")
-    private Set<AgendaItem> agendaItem;
+    Set<AgendaItem> agendaItem;
 
     // TODO series
     // TODO duration/end; date-of-writing

@@ -5,14 +5,14 @@ import javax.persistence.*;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
 
-@Path("/")
+@Path("/persons")
 @Stateless
 public class PersonExtension extends PersonWebResource {
     @PersistenceContext
     private EntityManager em;
 
     @GET
-    @Path("person-extension")
+    @Path("/extension")
     public Response getPersonExtension() {
         return Response.ok("hello extension").build();
     }
