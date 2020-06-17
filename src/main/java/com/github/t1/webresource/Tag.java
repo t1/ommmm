@@ -8,6 +8,8 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 import javax.xml.bind.annotation.*;
 
+import com.github.t1.webresource.annotations.WebResource;
+import com.github.t1.webresource.annotations.WebResourceKey;
 import lombok.*;
 
 @Entity

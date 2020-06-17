@@ -11,29 +11,18 @@
 	<inceptionYear>2013</inceptionYear>
 
 	<properties>
+        <failOnMissingWebXml>false</failOnMissingWebXml>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<cargo.port.offset>100</cargo.port.offset>
 	</properties>
-
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>org.jboss.spec</groupId>
-				<artifactId>jboss-javaee-6.0</artifactId>
-				<version>3.0.2.Final</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
 
 	<dependencies>
 		<!-- scope: only during build -->
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
-			<version>0.12.0</version>
+			<version>1.18.12</version>
 			<scope>provided</scope>
 			<optional>true</optional>
 		</dependency>
@@ -47,34 +36,15 @@
 
 		<!-- provided scope -->
 		<dependency>
-			<groupId>org.hibernate.javax.persistence</groupId>
-			<artifactId>hibernate-jpa-2.0-api</artifactId>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>javax.validation</groupId>
-			<artifactId>validation-api</artifactId>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.jboss.spec.javax.ws.rs</groupId>
-			<artifactId>jboss-jaxrs-api_1.1_spec</artifactId>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>javax.enterprise</groupId>
-			<artifactId>cdi-api</artifactId>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.jboss.spec.javax.ejb</groupId>
-			<artifactId>jboss-ejb-api_3.1_spec</artifactId>
+            <groupId>javax</groupId>
+            <artifactId>javaee-api</artifactId>
+            <version>8.0.1</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
-			<version>1.7.5</version>
+			<version>1.7.30</version>
 			<scope>provided</scope>
 		</dependency>
 
@@ -82,18 +52,13 @@
 		<dependency>
 			<groupId>com.github.t1</groupId>
 			<artifactId>logging-interceptor</artifactId>
-			<version>1.0-SNAPSHOT</version>
+			<version>3.2.3</version>
 			<optional>true</optional>
 		</dependency>
 		<dependency>
 			<groupId>com.github.t1</groupId>
 			<artifactId>stereotype-helper</artifactId>
-			<version>1.0-SNAPSHOT</version>
-		</dependency>
-		<dependency>
-			<groupId>com.google.guava</groupId>
-			<artifactId>guava</artifactId>
-			<version>14.0.1</version>
+			<version>1.0.6</version>
 		</dependency>
 		<dependency>
 			<groupId>com.github.t1</groupId>
@@ -105,25 +70,31 @@
 		<dependency>
 			<groupId>org.jboss.resteasy</groupId>
 			<artifactId>resteasy-jaxrs</artifactId>
-			<version>3.0-beta-4</version>
+			<version>3.12.1.Final</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.11</version><!--$NO-MVN-MAN-VER$ -->
+			<version>4.13</version><!--$NO-MVN-MAN-VER$ -->
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.hamcrest</groupId>
 			<artifactId>hamcrest-core</artifactId>
-			<version>1.2.1</version>
+			<version>2.2</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.mockito</groupId>
 			<artifactId>mockito-all</artifactId>
-			<version>1.9.5</version>
+			<version>1.10.19</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.glassfish.jaxb</groupId>
+			<artifactId>jaxb-runtime</artifactId>
+			<version>2.3.3</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
@@ -149,8 +120,8 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.1</version>
 				<configuration>
-					<source>1.7</source>
-					<target>1.7</target>
+					<source>11</source>
+					<target>11</target>
 					<showWarnings>true</showWarnings>
 					<showDeprecation>true</showDeprecation>
 					<encoding>utf8</encoding>
@@ -178,19 +149,6 @@
 				</configuration>
 			</plugin>
 			<plugin>
-				<groupId>org.projectlombok</groupId>
-				<artifactId>lombok-maven-plugin</artifactId>
-				<version>0.12.0.0</version>
-				<executions>
-					<execution>
-						<phase>generate-sources</phase>
-						<goals>
-							<goal>delombok</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
 				<groupId>org.jboss.as.plugins</groupId>
 				<artifactId>jboss-as-maven-plugin</artifactId>
 				<version>7.4.Final</version>
@@ -209,32 +167,6 @@
 	</reporting>
 
 	<profiles>
-		<profile>
-			<id>lombok-needs-tools-jar</id>
-			<activation>
-				<file>
-					<exists>${java.home}/../lib/tools.jar</exists>
-				</file>
-			</activation>
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>org.projectlombok</groupId>
-						<artifactId>lombok-maven-plugin</artifactId>
-						<version>0.12.0.0</version>
-						<dependencies>
-							<dependency>
-								<groupId>sun.jdk</groupId>
-								<artifactId>tools</artifactId>
-								<version>1.6</version>
-								<scope>system</scope>
-								<systemPath>${java.home}/../lib/tools.jar</systemPath>
-							</dependency>
-						</dependencies>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
 		<profile>
 			<id>cargo-jboss71x</id>
 			<build>
@@ -256,7 +188,7 @@
 								</artifactInstaller>
 							</container>
 							<deployables>
-								<!-- The project's artifact is automatically deployed if no deployable is defined. However, we define it here so 
+								<!-- The project's artifact is automatically deployed if no deployable is defined. However, we define it here so
 									that we can specify the context (we don't want the version to be included in the context). -->
 								<deployable>
 									<groupId>${project.groupId}</groupId>

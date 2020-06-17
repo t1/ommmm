@@ -1,12 +1,11 @@
 package com.github.t1.webresource;
 
 import java.util.Date;
+import java.util.Set;
 
 import javax.xml.bind.JAXB;
 
 import org.junit.Test;
-
-import com.google.common.collect.ImmutableSet;
 
 public class MeetingTest {
 
@@ -30,8 +29,8 @@ public class MeetingTest {
         meeting.setId(123L);
         meeting.setTitle("Potions And Poisons");
         meeting.setBegin(new Date());
-        meeting.setAttendees(ImmutableSet.of(snape("Severus", "Snape"), snape("Harry", "Potter")));
-        meeting.setAgendaItem(ImmutableSet.of(agendaItem("potions"), agendaItem("poisons")));
+        meeting.setAttendees(Set.of(snape("Severus", "Snape"), snape("Harry", "Potter")));
+        meeting.setAgendaItem(Set.of(agendaItem("potions"), agendaItem("poisons")));
 
         JAXB.marshal(meeting, System.out);
 

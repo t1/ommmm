@@ -11,8 +11,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import com.google.common.collect.ImmutableList;
-
 @RunWith(MockitoJUnitRunner.class)
 public class PersonTest {
     private final String XML = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n" //
@@ -63,7 +61,7 @@ public class PersonTest {
     public void shouldTagWithTag() throws Exception {
         person.tag(TAG1);
 
-        assertEquals(ImmutableList.of(TAG1), person.getTags());
+        assertEquals(List.of(TAG1), person.getTags());
     }
 
     @Test
@@ -72,7 +70,7 @@ public class PersonTest {
 
         person.tag(TAG1);
 
-        assertEquals(ImmutableList.of(TAG1), person.getTags());
+        assertEquals(List.of(TAG1), person.getTags());
     }
 
     @Test
@@ -82,7 +80,7 @@ public class PersonTest {
         boolean untagged = person.untag(TAG1);
 
         assertTrue(untagged);
-        assertEquals(ImmutableList.of(TAG2), person.getTags());
+        assertEquals(List.of(TAG2), person.getTags());
     }
 
     @Test
@@ -90,6 +88,6 @@ public class PersonTest {
         boolean untagged = person.untag(TAG1);
 
         assertFalse(untagged);
-        assertEquals(ImmutableList.of(), person.getTags());
+        assertEquals(List.of(), person.getTags());
     }
 }

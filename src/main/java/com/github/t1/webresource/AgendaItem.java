@@ -8,6 +8,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.*;
 
+import com.github.t1.webresource.annotations.WebResource;
 import lombok.*;
 
 import com.github.t1.webresource.codec.HtmlTitle;
